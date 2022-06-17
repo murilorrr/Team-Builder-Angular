@@ -20,9 +20,14 @@
 
     <div>
       <div class="ui input">
-        <input type="text" placeholder="# of teams">
+        <input
+        #numberOfTeamsInput
+        (input)="setNumberOfTeams(numberOfTeamsInput.value)"
+        type="number"
+        [value]="numberOfTeams"
+        placeholder="# of teams">
       </div>
-      <button class="ui secondary button" type="button">Generate Teams</button>
+      <button (click)="generateTeams()" class="ui secondary button" type="button">Generate Teams</button>
     </div>
 
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
