@@ -1,44 +1,56 @@
 <main class="container">
   <div class="ui card">
-
-    <h1>
-      Team Generator
-    </h1>
+    <h1>Team Generator</h1>
 
     <ul class="ui list members-list">
-      <div *ngFor="let member of members"class="item">
+      <div *ngFor="let member of members" class="item">
         {{ member }}
       </div>
     </ul>
 
     <div>
       <div class="ui input">
-        <input #addMemberInput (input)="changeInput(addMemberInput.value)" [value]="newMemberName" type="text" placeholder="name">
+        <input
+          #addMemberInput
+          (input)="changeInput(addMemberInput.value)"
+          [value]="newMemberName"
+          type="text"
+          placeholder="name"
+        />
       </div>
-      <button (click)="addMember()" class="ui primary button" type="button">Add</button>
+      <button (click)="addMember()" class="ui primary button" type="button">
+        Add
+      </button>
     </div>
 
     <div>
       <div class="ui input">
         <input
-        #numberOfTeamsInput
-        (input)="setNumberOfTeams(numberOfTeamsInput.value)"
-        type="number"
-        [value]="numberOfTeams"
-        placeholder="# of teams">
+          #numberOfTeamsInput
+          (input)="setNumberOfTeams(numberOfTeamsInput.value)"
+          type="number"
+          [value]="numberOfTeams"
+          placeholder="# of teams"
+        />
       </div>
-      <button (click)="generateTeams()" class="ui secondary button" type="button">Generate Teams</button>
+      <button
+        (click)="generateTeams()"
+        class="ui secondary button"
+        type="button"
+      >
+        Generate Teams
+      </button>
     </div>
 
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
   </div>
 
   <div *ngIf="teams.length" class="teams-container">
-    <app-team *ngFor="let team of teams; let i = index"
-    [team] = "team"
-    [index] = "i"
+    <app-team
+      *ngFor="let team of teams; let i = index"
+      [team]="team"
+      [index]="i"
     >
-
-    </app-team> 
+    </app-team>
   </div>
 </main>

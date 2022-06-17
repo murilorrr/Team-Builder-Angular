@@ -3,14 +3,14 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'FAPP';
-  newMemberName = "";
+  newMemberName = '';
   members: string[] = [];
-  errorMessage = "";
-  numberOfTeams: number | "" = "";
+  errorMessage = '';
+  numberOfTeams: number | '' = '';
   teams: string[][] = [];
 
   addMember() {
@@ -26,7 +26,7 @@ export class AppComponent {
     const twoSeconds = 2000;
     this.errorMessage = message;
     setTimeout(() => {
-      this.errorMessage = "";
+      this.errorMessage = '';
     }, twoSeconds);
   }
 
@@ -35,26 +35,25 @@ export class AppComponent {
   }
 
   setNumberOfTeams(numberOfTeams: string) {
-    this.numberOfTeams = parseInt(numberOfTeams, 10);;
+    this.numberOfTeams = parseInt(numberOfTeams, 10);
   }
 
   generateTeams() {
-
     if (this.numberOfTeams <= 0 || !this.numberOfTeams) {
-      this.triggerError("invalid number of teams.");
+      this.triggerError('invalid number of teams.');
     }
 
     if (this.members.length < this.numberOfTeams) {
-      this.triggerError("Has teams a lot.")
+      this.triggerError('Has teams a lot.');
     }
 
     const allMembers = [...this.members];
-    
-    while(allMembers.length) {
+
+    while (allMembers.length) {
       for (let index = 0; index < this.numberOfTeams; index++) {
         const random = Math.floor(Math.random() * allMembers.length);
         const member = allMembers.splice(random, 1)[0];
-      
+
         if (!member) break;
         if (this.teams[index]) {
           this.teams[index].push(member);
@@ -65,11 +64,10 @@ export class AppComponent {
     }
 
     this.clearInputs();
-    
   }
 
   clearInputs(): void {
     this.members = [];
-    this.numberOfTeams = "";
+    this.numberOfTeams = '';
   }
 }
