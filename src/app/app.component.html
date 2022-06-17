@@ -5,7 +5,7 @@
       Team Generator
     </h1>
 
-    <ul class="ui list">
+    <ul class="ui list members-list">
       <div *ngFor="let member of members"class="item">
         {{ member }}
       </div>
@@ -31,5 +31,16 @@
     </div>
 
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  </div>
+
+  <div *ngIf="teams.length" class="teams-container">
+    <div *ngFor="let team of teams; let i = index" class="team-container">
+      <h3>Team {{i + 1}}</h3>
+      <ul>
+        <li *ngFor="let member of team">
+          {{ member }}
+        </li>
+      </ul>
+    </div>
   </div>
 </main>

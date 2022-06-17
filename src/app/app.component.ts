@@ -15,7 +15,7 @@ export class AppComponent {
 
   addMember() {
     if (!this.newMemberName) {
-      this.triggerError("Name can't be empty");
+      this.triggerError("Name can't be empty.");
     }
 
     this.members.push(this.newMemberName);
@@ -41,7 +41,11 @@ export class AppComponent {
   generateTeams() {
 
     if (this.numberOfTeams <= 0 || !this.numberOfTeams) {
-      this.triggerError("invalid number of teams");
+      this.triggerError("invalid number of teams.");
+    }
+
+    if (this.members.length < this.numberOfTeams) {
+      this.triggerError("Has teams a lot.")
     }
 
     const allMembers = [...this.members];
@@ -59,7 +63,13 @@ export class AppComponent {
         }
       }
     }
-    console.log(this.teams);
+
+    this.clearInputs();
     
+  }
+
+  clearInputs(): void {
+    this.members = [];
+    this.numberOfTeams = "";
   }
 }
